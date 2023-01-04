@@ -54,3 +54,29 @@ $( document ).ready(function() {
 });
   
 });
+
+$(function () {
+  
+  console.log("FUCK");
+    var n = { x: -1, y: -1 };
+    $(document).mousemove(function (i) {
+        (n.x = i.pageX), (n.y = i.pageY);
+    });
+    var i = function () {
+        return "hsla(" + (n.y / $(window).height()) * 360 + ", 60%, 50%, 1)";
+    };
+  
+    $(".library-wrapper").on("mouseenter", ".book", 
+        function () {
+          console.log("...");
+            var n = i();
+            $(this).css("color", n), $(this).css("border", "1px solid " + n);
+        }
+    ); 
+  
+  $(".library-wrapper").on("mouseleave", ".book", 
+        function () { 
+    $(this).css("color", "black"), $(this).css("border", "1px solid black");
+        }
+    );
+});

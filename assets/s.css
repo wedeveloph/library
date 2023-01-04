@@ -35,6 +35,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  padding-bottom: 40px;
   font-size: 0.8rem;
 }
 footer a {
@@ -42,11 +43,20 @@ footer a {
 }
 
 #nav {
+  z-index: 9;
   position: fixed;
   background: #fff;
   width: 100%;
   bottom: 0;
   padding: 1em;
+}
+#nav .type {
+  display: flex;
+  justify-content: space-around;
+}
+#nav a {
+  padding: 0 0.5em;
+  cursor: pointer;
 }
 
 #nav h1 {
@@ -105,6 +115,8 @@ sup {
   vertical-align: center;
   font-size: 0.7rem;
   cursor: pointer;
+  transition: color 0.2s linear;
+  transition-delay: 0.1s;
 }
 .book strong {
   display: inline-block;
@@ -118,6 +130,7 @@ sup {
 }
 
 .book:hover {
+  transition: color 0s linear;
   transform: translateX(5px);
 }
 
