@@ -71,6 +71,12 @@ footer {
   a{
     padding: 0 .5em;
     cursor: pointer;
+    opacity: 0.2;
+    font-size: .8rem;
+  }
+  
+  a[active]{
+    opacity: 0.8;
   }
   
 }
@@ -104,12 +110,18 @@ footer {
     a {
       display: block;
       margin: .25em 0;
+      font-size: .9em;
+      color: blue;
     }
   }
   
   p{
     max-width: 600px;
     opacity: 0.8;
+  }
+  
+  .intro{
+    p{opacity: 1;}
   }
 
   .types, .fundraiser{
@@ -120,7 +132,15 @@ footer {
   h3 {
     font-weight: normal;
   }
-
+  
+  @media only screen and (max-width: 720px) {
+    flex-wrap: wrap;
+  
+    p{
+      font-size: .8rem;
+    }
+    
+  }
 }
 
 sup {
@@ -130,6 +150,26 @@ sup {
 #library {
   width: 100%;
   padding: 1em;
+  
+  .filters{
+    margin-bottom: 1em;
+    
+    a{
+      font-size: .8rem;
+      opacity: 0.4;
+    }
+    
+    a:hover, a[active]{
+      opacity: 0.8;
+      cursor: pointer;
+    }
+    
+    
+    a:not(:last-of-type):after{
+      content: ","
+    }
+    
+  }
 
   .library-wrapper {
     width: 100%;
@@ -148,7 +188,7 @@ sup {
   vertical-align: center;
   font-size: .7rem;
   cursor: pointer;
-  transition:color .2s linear;
+  transition:all .2s linear;
   transition-delay: .1s;
 
   strong {
@@ -167,7 +207,6 @@ sup {
 
 .book:hover {
   transition:color 0s linear;
-  transform: translateX(5px);
 }
 
 .book[type='acquired'] {}
@@ -193,6 +232,7 @@ sup {
     padding: 0 1em;
 
     .book {
+      margin: .15em 0;
       width: 100% !important;
     }
 

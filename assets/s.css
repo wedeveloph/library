@@ -57,6 +57,11 @@ footer a {
 #nav a {
   padding: 0 0.5em;
   cursor: pointer;
+  opacity: 0.2;
+  font-size: 0.8rem;
+}
+#nav a[active] {
+  opacity: 0.8;
 }
 
 #nav h1 {
@@ -80,16 +85,29 @@ footer a {
 #info .links a {
   display: block;
   margin: 0.25em 0;
+  font-size: 0.9em;
+  color: blue;
 }
 #info p {
   max-width: 600px;
   opacity: 0.8;
+}
+#info .intro p {
+  opacity: 1;
 }
 #info .types p, #info .fundraiser p {
   font-size: 0.6rem;
 }
 #info h3 {
   font-weight: normal;
+}
+@media only screen and (max-width: 720px) {
+  #info {
+    flex-wrap: wrap;
+  }
+  #info p {
+    font-size: 0.8rem;
+  }
 }
 
 sup {
@@ -99,6 +117,20 @@ sup {
 #library {
   width: 100%;
   padding: 1em;
+}
+#library .filters {
+  margin-bottom: 1em;
+}
+#library .filters a {
+  font-size: 0.8rem;
+  opacity: 0.4;
+}
+#library .filters a:hover, #library .filters a[active] {
+  opacity: 0.8;
+  cursor: pointer;
+}
+#library .filters a:not(:last-of-type):after {
+  content: ",";
 }
 #library .library-wrapper {
   width: 100%;
@@ -115,7 +147,7 @@ sup {
   vertical-align: center;
   font-size: 0.7rem;
   cursor: pointer;
-  transition: color 0.2s linear;
+  transition: all 0.2s linear;
   transition-delay: 0.1s;
 }
 .book strong {
@@ -131,7 +163,6 @@ sup {
 
 .book:hover {
   transition: color 0s linear;
-  transform: translateX(5px);
 }
 
 .book[type=wishlist] {
@@ -154,6 +185,7 @@ footer {
     padding: 0 1em;
   }
   #library .book {
+    margin: 0.15em 0;
     width: 100% !important;
   }
 }
