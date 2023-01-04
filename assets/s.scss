@@ -27,12 +27,12 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    color:#272727;
+  color: #272727;
   font-family: 'Standard';
 }
 
 main {
-//  display: flex;
+  //  display: flex;
 }
 
 p {
@@ -48,98 +48,111 @@ footer {
   padding: 1em;
   padding-bottom: 40px;
   font-size: .8rem;
-  a {
-    color: blue;
-  }
-}
-
-
-#nav{
-  z-index: 9;
-  
-  position: fixed;
-  background:#fff;
-  width: 100%;
-  bottom: 0;
-  padding: 1em;
-  
-  .type{
-  display: flex;
-  justify-content: space-around;
-  }
   
   a{
+    color: #000;
+    text-decoration: none;
+    opacity: 0.8;
+  }
+
+}
+
+#nav {
+  z-index: 9;
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+
+  .type {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  a {
     padding: 0 .5em;
     cursor: pointer;
     opacity: 0.2;
     font-size: .8rem;
   }
-  
-  a[active]{
+
+  a[active] {
     opacity: 0.8;
   }
-  
-}
 
-#nav{
-  
-  h1{
-    font-weight: normal;
-    font-size: 1.15rem;
-  }
-  
 }
 
 #info {
-  padding: 1em;
-  font-size: .7rem;
+  padding: 1em .5em;
+  font-size: .8rem;
   display: flex;
   justify-content: space-between;
-  
-  .info-box{
-    margin: 0 .5em;
+
+  a {
+    color: blue;
   }
 
   span.type {
     display: inline-block;
     padding: .25em 0;
-    
+
   }
-  
+
   .links {
+    display: flex;
     a {
       display: block;
+      padding: .25em 0;
       margin: .25em 0;
-      font-size: .9em;
-      color: blue;
+      margin-right: 1em;
+    }
+  }
+
+  p {
+    max-width: 600px;
+    color: #434343;
+  }
+
+  .info-box{
+    margin: 0 .5em;
+    p{
+      max-width: 600px;
+      
     }
   }
   
-  p{
-    max-width: 600px;
-    opacity: 0.8;
-  }
+
   
-  .intro{
-    p{opacity: 1;}
+  .intro {
+    flex-grow: 2;
+
+    p {
+      max-width: 920px;
+      font-size: 1.1rem;
+    }
   }
 
-  .types, .fundraiser{
-    p{font-size: .6rem;}
+  .types,
+  .fundraiser {
+    p {
+      font-size: .75rem;
+    }
   }
-  
- 
+
+
   h3 {
     font-weight: normal;
   }
-  
+
   @media only screen and (max-width: 720px) {
     flex-wrap: wrap;
-  
-    p{
-      font-size: .8rem;
+
+    p {
+      font-size: .9rem;
     }
-    
+
   }
 }
 
@@ -147,29 +160,36 @@ sup {
   font-size: .4rem;
 }
 
-#library {
-  width: 100%;
-  padding: 1em;
-  
-  .filters{
-    margin-bottom: 1em;
-    
-    a{
-      font-size: .8rem;
+
+  #filters {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding: 1em;
+    width: 100%;
+
+    a {
+      font-size: 1rem;
       opacity: 0.4;
     }
-    
-    a:hover, a[active]{
+
+    a:hover,
+    a[active] {
       opacity: 0.8;
       cursor: pointer;
     }
-    
-    
-    a:not(:last-of-type):after{
+
+
+    a:not(:last-of-type):after {
       content: ","
     }
-    
+
   }
+
+#library {
+  width: 100%;
+  padding: 0 1em;
+
 
   .library-wrapper {
     width: 100%;
@@ -186,15 +206,16 @@ sup {
   border: 1px solid rgb(0, 0, 0, 0.5);
   padding: .75em;
   vertical-align: center;
-  font-size: .7rem;
+  font-size: .8rem;
   cursor: pointer;
-  transition:all .2s linear;
+  transition: all .2s linear;
   transition-delay: .1s;
 
   strong {
     display: inline-block;
     font-weight: normal;
-    line-height: 110%;
+    line-height: 100%;
+    font-size: 1rem;
   }
 
   u {
@@ -206,7 +227,7 @@ sup {
 }
 
 .book:hover {
-  transition:color 0s linear;
+  transition: color 0s linear;
 }
 
 .book[type='acquired'] {}
@@ -225,11 +246,12 @@ sup {
 
   #info {
     width: 100%;
+    padding: .5em;
   }
 
   #library {
     width: 100%;
-    padding: 0 1em;
+    padding: 0 .5em;
 
     .book {
       margin: .15em 0;

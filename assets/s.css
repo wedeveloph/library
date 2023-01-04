@@ -39,7 +39,9 @@ footer {
   font-size: 0.8rem;
 }
 footer a {
-  color: blue;
+  color: #000;
+  text-decoration: none;
+  opacity: 0.8;
 }
 
 #nav {
@@ -48,6 +50,7 @@ footer a {
   background: #fff;
   width: 100%;
   bottom: 0;
+  left: 0;
   padding: 1em;
 }
 #nav .type {
@@ -64,39 +67,48 @@ footer a {
   opacity: 0.8;
 }
 
-#nav h1 {
-  font-weight: normal;
-  font-size: 1.15rem;
-}
-
 #info {
-  padding: 1em;
-  font-size: 0.7rem;
+  padding: 1em 0.5em;
+  font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
 }
-#info .info-box {
-  margin: 0 0.5em;
+#info a {
+  color: blue;
 }
 #info span.type {
   display: inline-block;
   padding: 0.25em 0;
 }
+#info .links {
+  display: flex;
+}
 #info .links a {
   display: block;
+  padding: 0.25em 0;
   margin: 0.25em 0;
-  font-size: 0.9em;
-  color: blue;
+  margin-right: 1em;
 }
 #info p {
   max-width: 600px;
-  opacity: 0.8;
+  color: #434343;
+}
+#info .info-box {
+  margin: 0 0.5em;
+}
+#info .info-box p {
+  max-width: 600px;
+}
+#info .intro {
+  flex-grow: 2;
 }
 #info .intro p {
-  opacity: 1;
+  max-width: 920px;
+  font-size: 1.1rem;
 }
-#info .types p, #info .fundraiser p {
-  font-size: 0.6rem;
+#info .types p,
+#info .fundraiser p {
+  font-size: 0.75rem;
 }
 #info h3 {
   font-weight: normal;
@@ -106,7 +118,7 @@ footer a {
     flex-wrap: wrap;
   }
   #info p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -114,23 +126,29 @@ sup {
   font-size: 0.4rem;
 }
 
-#library {
-  width: 100%;
+#filters {
+  position: sticky;
+  top: 0;
+  background: #fff;
   padding: 1em;
+  width: 100%;
 }
-#library .filters {
-  margin-bottom: 1em;
-}
-#library .filters a {
-  font-size: 0.8rem;
+#filters a {
+  font-size: 1rem;
   opacity: 0.4;
 }
-#library .filters a:hover, #library .filters a[active] {
+#filters a:hover,
+#filters a[active] {
   opacity: 0.8;
   cursor: pointer;
 }
-#library .filters a:not(:last-of-type):after {
+#filters a:not(:last-of-type):after {
   content: ",";
+}
+
+#library {
+  width: 100%;
+  padding: 0 1em;
 }
 #library .library-wrapper {
   width: 100%;
@@ -145,7 +163,7 @@ sup {
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0.75em;
   vertical-align: center;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s linear;
   transition-delay: 0.1s;
@@ -153,7 +171,8 @@ sup {
 .book strong {
   display: inline-block;
   font-weight: normal;
-  line-height: 110%;
+  line-height: 100%;
+  font-size: 1rem;
 }
 .book u {
   font-size: 0.9em;
@@ -178,11 +197,12 @@ footer {
 
   #info {
     width: 100%;
+    padding: 0.5em;
   }
 
   #library {
     width: 100%;
-    padding: 0 1em;
+    padding: 0 0.5em;
   }
   #library .book {
     margin: 0.15em 0;
