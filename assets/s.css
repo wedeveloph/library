@@ -20,14 +20,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #272727;
   font-family: "Standard";
 }
 
-main {
-  display: flex;
-}
-
 p {
+  margin: 0;
+  margin-bottom: 0.5em;
   line-height: 130%;
 }
 
@@ -42,32 +41,60 @@ footer a {
   color: blue;
 }
 
-#info {
-  width: 300px;
+#nav {
+  position: fixed;
+  background: #fff;
+  width: 100%;
+  bottom: 0;
   padding: 1em;
-  font-size: 0.8rem;
+}
+
+#nav h1 {
+  font-weight: normal;
+  font-size: 1.15rem;
+}
+
+#info {
+  padding: 1em;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+#info .info-box {
+  margin: 0 0.5em;
+}
+#info span.type {
+  display: inline-block;
+  padding: 0.25em 0;
 }
 #info .links a {
   display: block;
   margin: 0.25em 0;
 }
-#info h1, #info h3 {
+#info p {
+  max-width: 600px;
+  opacity: 0.8;
+}
+#info .types p, #info .fundraiser p {
+  font-size: 0.6rem;
+}
+#info h3 {
   font-weight: normal;
 }
 
 sup {
-  font-size: 0.5rem;
+  font-size: 0.4rem;
 }
 
 #library {
-  width: calc(100% - 300px - 100px);
+  width: 100%;
   padding: 1em;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
 }
 #library .library-wrapper {
-  max-width: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .book {
@@ -76,7 +103,7 @@ sup {
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0.75em;
   vertical-align: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   cursor: pointer;
 }
 .book strong {
@@ -99,7 +126,8 @@ sup {
 }
 
 @media only screen and (max-width: 720px) {
-  main, footer {
+  main,
+footer {
     display: flex;
     flex-direction: column;
   }

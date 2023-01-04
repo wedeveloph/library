@@ -1,143 +1,184 @@
-*{
+* {
   box-sizing: border-box;
 }
 
 @font-face {
-    font-family: 'Standard';
-    src: url('Standard-Book.woff2') format('woff2'),
-        url('Standard-Book.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Standard';
+  src: url('Standard-Book.woff2') format('woff2'),
+    url('Standard-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Standard';
-    src: url('Standard-Bold.woff2') format('woff2'),
-        url('Standard-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Standard';
+  src: url('Standard-Bold.woff2') format('woff2'),
+    url('Standard-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 
 
-body{
-//background: linear-gradient(90deg, rgba(255,196,232,1) 0%, rgba(255,255,255,1) 100%);
+body {
+  //background: linear-gradient(90deg, rgba(255,196,232,1) 0%, rgba(255,255,255,1) 100%);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    font-family: 'Standard';
+    color:#272727;
+  font-family: 'Standard';
 }
 
-main{
-  display: flex;
+main {
+//  display: flex;
 }
 
-p{
+p {
+  margin: 0;
+  margin-bottom: .5em;
   line-height: 130%;
 }
 
-footer{
-  
+footer {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 1em;
   font-size: .8rem;
-  
-  a{
+  a {
     color: blue;
   }
+}
+
+
+#nav{
+  position: fixed;
+  background:#fff;
+  width: 100%;
+  bottom: 0;
+  padding: 1em;
+}
+
+#nav{
+  
+  h1{
+    font-weight: normal;
+    font-size: 1.15rem;
+  }
   
 }
 
-#info{
-  width: 300px;
+#info {
   padding: 1em;
-  font-size: .8rem;
+  font-size: .7rem;
+  display: flex;
+  justify-content: space-between;
   
-  
-  .links{
-    a{display:block;margin:.25em 0;}
+  .info-box{
+    margin: 0 .5em;
+  }
+
+  span.type {
+    display: inline-block;
+    padding: .25em 0;
+    
   }
   
-  h1, h3{
+  .links {
+    a {
+      display: block;
+      margin: .25em 0;
+    }
+  }
+  
+  p{
+    max-width: 600px;
+    opacity: 0.8;
+  }
+
+  .types, .fundraiser{
+    p{font-size: .6rem;}
+  }
+  
+ 
+  h3 {
     font-weight: normal;
   }
-  
+
 }
 
-sup{
-  font-size: .5rem;
+sup {
+  font-size: .4rem;
 }
 
-#library{
-  width: calc(100% - 300px - 100px);
+#library {
+  width: 100%;
   padding: 1em;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  
-  .library-wrapper{
-    max-width: 600px;
+
+  .library-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
-  
+
 }
 
-.book{
+.book {
   display: inline-block;
   margin: .1em 0;
   border: 1px solid rgb(0, 0, 0, 0.5);
   padding: .75em;
   vertical-align: center;
-  font-size: .8rem;
+  font-size: .7rem;
   cursor: pointer;
-  
-  strong{
+
+  strong {
     display: inline-block;
     font-weight: normal;
     line-height: 110%;
   }
 
-  u{
+  u {
     font-size: .9em;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
   }
-  
+
 }
 
-.book:hover{
-  transform: translateX(5px);  
+.book:hover {
+  transform: translateX(5px);
 }
 
-  .book[type='acquired']{
-    
-  }
-  .book[type='wishlist']{
-    opacity: 0.4;
-  }
+.book[type='acquired'] {}
 
-@media only screen and (max-width: 720px){
-  
-  main, footer{
+.book[type='wishlist'] {
+  opacity: 0.4;
+}
+
+@media only screen and (max-width: 720px) {
+
+  main,
+  footer {
     display: flex;
     flex-direction: column;
   }
-  
-  #info{
+
+  #info {
     width: 100%;
   }
-  
-  #library{
+
+  #library {
     width: 100%;
     padding: 0 1em;
-    
-    .book{
+
+    .book {
       width: 100% !important;
     }
-    
+
   }
-  
+
 }

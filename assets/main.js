@@ -11,6 +11,11 @@ function pick(arr) {
 
 let library = "https://opensheet.elk.sh/1OV6LuUUmJuGLLDSNERuG83fAMfBZUanwNbQBcU8wedY/Inventory";
 
+const libraries = {
+  
+}
+
+
 $( document ).ready(function() {
     console.log( "ready!" );
   
@@ -35,7 +40,7 @@ $( document ).ready(function() {
           <strong name='title'>` + book.Book + `</strong><br>
           <u name='author'>` + book.Author + `</u><br>
           </div>`).appendTo(".library-wrapper")
-          .css("width", randInt(70,93) + "%")
+          .css("width", randInt(36,45) + "%")
 //          .css("transform", "rotate(" + (_neg * _rotate) + "deg)")
       
       if(_acquisition == "wishlist"){
