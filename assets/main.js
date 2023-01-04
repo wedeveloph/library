@@ -56,8 +56,6 @@ $( document ).ready(function() {
 });
 
 $(function () {
-  
-  console.log("FUCK");
     var n = { x: -1, y: -1 };
     $(document).mousemove(function (i) {
         (n.x = i.pageX), (n.y = i.pageY);
