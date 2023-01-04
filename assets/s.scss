@@ -2,14 +2,70 @@
   box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Standard';
+    src: url('Standard-Book.woff2') format('woff2'),
+        url('Standard-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Standard';
+    src: url('Standard-Bold.woff2') format('woff2'),
+        url('Standard-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+body{
+//background: linear-gradient(90deg, rgba(255,196,232,1) 0%, rgba(255,255,255,1) 100%);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    font-family: 'Standard';
+}
+
 main{
   display: flex;
+}
+
+p{
+  line-height: 130%;
+}
+
+footer{
+  
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: .8rem;
+  
+  a{
+    color: blue;
+  }
   
 }
 
 #info{
   width: 300px;
   padding: 1em;
+  font-size: .8rem;
+  
+  
+  .links{
+    a{display:block;margin:.25em 0;}
+  }
+  
+  h1, h3{
+    font-weight: normal;
+  }
+  
 }
 
 sup{
@@ -22,14 +78,18 @@ sup{
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  
+  .library-wrapper{
+    max-width: 600px;
+  }
+  
 }
 
 .book{
   display: inline-block;
-  width: 300px;
   margin: .1em 0;
-  border: 1px solid #000;
-  padding: .5em;
+  border: 1px solid rgb(0, 0, 0, 0.5);
+  padding: .75em;
   vertical-align: center;
   font-size: .8rem;
   cursor: pointer;
@@ -42,12 +102,14 @@ sup{
 
   u{
     font-size: .9em;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
   }
   
 }
 
 .book:hover{
-  transform: translateX(3px);  
+  transform: translateX(5px);  
 }
 
   .book[type='acquired']{
@@ -57,9 +119,9 @@ sup{
     opacity: 0.4;
   }
 
-@media only screen and (max-width: 680px){
+@media only screen and (max-width: 720px){
   
-  main{
+  main, footer{
     display: flex;
     flex-direction: column;
   }
@@ -71,6 +133,11 @@ sup{
   #library{
     width: 100%;
     padding: 0 1em;
+    
+    .book{
+      width: 100% !important;
+    }
+    
   }
   
 }

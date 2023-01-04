@@ -34,9 +34,9 @@ $( document ).ready(function() {
       let bookDiv = $(`<div class='book' type='` + _acquisition + `'>
           <strong name='title'>` + book.Book + `</strong><br>
           <u name='author'>` + book.Author + `</u><br>
-          </div>`).appendTo("#library")
+          </div>`).appendTo(".library-wrapper")
           .css("width", randInt(70,93) + "%")
-          .css("transform", "rotate(" + (_neg * _rotate) + "deg)");
+//          .css("transform", "rotate(" + (_neg * _rotate) + "deg)")
       
       if(_acquisition == "wishlist"){
         bookDiv.find("strong").append("<sup>WISHLIST</sup>")

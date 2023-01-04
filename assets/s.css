@@ -2,13 +2,57 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Standard";
+  src: url("Standard-Book.woff2") format("woff2"), url("Standard-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Standard";
+  src: url("Standard-Bold.woff2") format("woff2"), url("Standard-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Standard";
+}
+
 main {
   display: flex;
+}
+
+p {
+  line-height: 130%;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  font-size: 0.8rem;
+}
+footer a {
+  color: blue;
 }
 
 #info {
   width: 300px;
   padding: 1em;
+  font-size: 0.8rem;
+}
+#info .links a {
+  display: block;
+  margin: 0.25em 0;
+}
+#info h1, #info h3 {
+  font-weight: normal;
 }
 
 sup {
@@ -22,13 +66,15 @@ sup {
   justify-content: flex-start;
   flex-direction: column;
 }
+#library .library-wrapper {
+  max-width: 600px;
+}
 
 .book {
   display: inline-block;
-  width: 300px;
   margin: 0.1em 0;
-  border: 1px solid #000;
-  padding: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 0.75em;
   vertical-align: center;
   font-size: 0.8rem;
   cursor: pointer;
@@ -40,18 +86,20 @@ sup {
 }
 .book u {
   font-size: 0.9em;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .book:hover {
-  transform: translateX(3px);
+  transform: translateX(5px);
 }
 
 .book[type=wishlist] {
   opacity: 0.4;
 }
 
-@media only screen and (max-width: 680px) {
-  main {
+@media only screen and (max-width: 720px) {
+  main, footer {
     display: flex;
     flex-direction: column;
   }
@@ -63,6 +111,9 @@ sup {
   #library {
     width: 100%;
     padding: 0 1em;
+  }
+  #library .book {
+    width: 100% !important;
   }
 }
 

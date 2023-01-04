@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+Redirect 301 "/suggest" "https://forms.gle/5cZYf8wq1i2HPmcs7"
