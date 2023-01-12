@@ -160,8 +160,7 @@ sup {
 .book {
   display: inline-block;
   margin: 0.1em 0;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 0.75em;
+  padding: 0.15em 0.75em;
   vertical-align: center;
   font-size: 0.8rem;
   cursor: pointer;
@@ -171,6 +170,7 @@ sup {
 .book strong {
   display: inline-block;
   font-weight: normal;
+  text-align: justify;
   line-height: 100%;
   font-size: 1rem;
 }
