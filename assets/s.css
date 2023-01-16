@@ -46,8 +46,8 @@ footer a {
 
 #top {
   display: flex;
-  justify-content: space-between;
-  height: 100px;
+  justify-content: flex-start;
+  height: 130px;
 }
 #top h1, #top h2 {
   font-weight: normal;
@@ -67,6 +67,12 @@ footer a {
   margin-right: 0.5em;
   border-radius: 1px solid #000;
   padding: 0.5em;
+}
+#top .t.title {
+  width: 250px;
+}
+#top .t.subnav {
+  width: 120px;
 }
 #top .t.info {
   height: 100%;
@@ -209,7 +215,7 @@ sup {
   display: inline-block;
   margin: 0.15em 0;
   border: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 0.25em 0.75em;
+  padding: 0.5em 0.75em;
   vertical-align: center;
   font-size: 0.8rem;
   cursor: pointer;

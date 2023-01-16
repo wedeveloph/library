@@ -80,12 +80,14 @@ $(function () {
           console.log("...");
             var n = i();
             $(this).css("color", n);
+            $(this).css("border", "1px solid " + n );
         }
     ); 
   
   $(".library-wrapper").on("mouseleave", ".book", 
         function () { 
     $(this).css("color", "black");
+            $(this).css("border", "1px solid black");
         }
     );
 });

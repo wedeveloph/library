@@ -59,8 +59,8 @@ footer {
 
 #top{
   display: flex;
-  justify-content: space-between;
-  height: 100px;
+  justify-content: flex-start;
+  height: 130px;
   
   h1,h2{
     font-weight: normal;
@@ -89,6 +89,13 @@ footer {
     
   }
   
+  .t.title{
+   width: 250px; 
+  }
+  
+  .t.subnav{
+    width: 120px;
+  }
   
   .t.info{
     height: 100%;
@@ -272,7 +279,7 @@ sup {
   display: inline-block;
   margin: .15em 0;
   border: 1px solid rgb(0, 0, 0, 0.5);
-  padding: .25em .75em;
+  padding: .5em .75em;
   vertical-align: center;
   font-size: .8rem;
   cursor: pointer;
