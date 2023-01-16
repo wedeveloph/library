@@ -19,15 +19,26 @@ const libraries = {
 $( document ).ready(function() {
     console.log( "ready!" );
   
+  // Handle navigation
+  $("#top .subnav").on("click", "h2", function(){
+    let g = $(this).attr("goto");
+
+    console.log(g);
+    
+    $("#top .info .info-wrapper").hide();
+    $("#top .info .info-wrapper[content=" + g +"]").show();
+    
+  });
+  
+  
+  // Get books
   $.getJSON(library, function(data) {
-    // JSON result in `data` variable
-//    console.log(data);
     
     data.forEach(function(book, i){
       
       if(!book.hasOwnProperty('Book')) return;
       
-      console.log(book, i);
+//      console.log(book, i);
       
       let _acquisition;
       let _neg = pick([-1, 1]);
