@@ -114,6 +114,10 @@ p {
       left: 0;
       text-align: center;
       
+  @media only screen and (max-width: 720px) {
+      display: none;
+      }
+      
     }
     
     a{
@@ -557,6 +561,7 @@ opacity: 1;
   .library-view-horizontal-wrapper{
     width: 100%;
     overflow-x: scroll;
+    overflow-y: hidden;
     height: 150px;
     padding: .5em;
   }
@@ -650,8 +655,8 @@ opacity: 1;
     text-align: justify;
     line-height: 110%;
     font-family: 'Editorial New';
-      font-weight: 300;
-      letter-spacing: -.25px;
+    font-weight: 300;
+    letter-spacing: -.25px;
   }
 
   span[name='author'] {
@@ -672,6 +677,8 @@ opacity: 1;
     
     span[name='title'] {
     padding-left: .75rem;
+    width: 100%;
+    max-width: none;
     }
     
   span[name='author'] { display: none; }

@@ -81,6 +81,11 @@ p {
   left: 0;
   text-align: center;
 }
+@media only screen and (max-width: 720px) {
+  #intro .intro-nav span.descriptor {
+    display: none;
+  }
+}
 #intro .intro-nav a {
   cursor: pointer;
   z-index: 9;
@@ -417,6 +422,7 @@ sup {
 #library .library-view .library-view-horizontal-wrapper {
   width: 100%;
   overflow-x: scroll;
+  overflow-y: hidden;
   height: 150px;
   padding: 0.5em;
 }
@@ -516,6 +522,8 @@ sup {
   }
   .library-view-list .book span[name=title] {
     padding-left: 0.75rem;
+    width: 100%;
+    max-width: none;
   }
   .library-view-list .book span[name=author] {
     display: none;
