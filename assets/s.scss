@@ -5,15 +5,6 @@
 $serif: "Times New Roman";
 
 @font-face {
-    font-family: 'Favorit Mono';
-    src: url('FavoritMono-Regular.woff2') format('woff2'),
-        url('FavoritMono-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
     font-family: 'Editorial New';
     src: url('EditorialNew-Regular.woff2') format('woff2'),
         url('EditorialNew-Regular.woff') format('woff');
@@ -61,7 +52,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #272727;
-        font-family: 'Favorit Mono';
+  font-family: $serif;
 
 
   margin: 0;
@@ -72,6 +63,10 @@ body {
 
 main {
   //  display: flex;
+}
+
+footer{
+  min-height: 5vh;
 }
 
 p {
@@ -97,6 +92,7 @@ p {
 }
 
 #intro{
+
   
   .intro-nav{
     position: absolute;
@@ -104,6 +100,8 @@ p {
     justify-content: space-between;
     width: 100%;
     padding: 2em;
+    font-family: 'Editorial New';
+    font-weight: 300;
 
     
     span.descriptor{
@@ -114,14 +112,15 @@ p {
       padding: 2em;
       width: 100%;
       left: 0;
-      text-transform: uppercase;
       text-align: center;
+      
     }
     
     a{
       cursor: pointer;
       z-index: 9;
-      opacity: 0.75;
+      opacity: 0.8;
+      letter-spacing: -.25px;
     }
     
     a:hover{
@@ -159,6 +158,9 @@ p {
       letter-spacing: -.25px;
       font-size: .8rem;
       text-align: center;
+      max-width: 270px;
+      line-height: 90%;
+      margin: 0 auto;
     }
     
     .intro-books{
@@ -172,38 +174,32 @@ p {
         margin: .2em;
       }
       
-    }
-    
-  }
-  
-  
+    } 
+  } 
 }
 
 
-// FOOTER
-
-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
-  padding-bottom: 40px;
-  font-size: .8rem;
+#intro{
   
-  a{
-    color: #000;
-    text-decoration: none;
-    opacity: 0.8;
+  .decor{
+    position: absolute;
+    mix-blend-mode: darken;
   }
-
+  
+  .decor-book{
+    bottom: 0;
+    opacity: 0.4;
+  }
+  
 }
 
 // TOP
 
 #top{
   display: flex;
-  justify-content: flex-start;
-  height: 130px;
+  justify-content: space-between;
+  min-height: 260px;
+  padding: 2em;
   
   h1,h2{
     font-weight: normal;
@@ -214,7 +210,12 @@ footer {
   .subnav{
     cursor: pointer;
     h2{
-      font-size: 1rem;
+      font-size: 1.25rem;
+      font-family: "Editorial New";
+      font-weight: 300;
+      letter-spacing: -.25px;
+      margin: 0;
+      padding: 0;
     }
   }
   
@@ -223,9 +224,7 @@ footer {
   }
   
   .t{
-    margin-right: .5em;
     border-radius: 1px solid #000;
-    padding: .5em;
   }
   
   .t:first-of-type{
@@ -245,7 +244,7 @@ footer {
     overflow-y: scroll;
     flex-grow: 1;
     width: 70vw;
-    max-width: 500px;
+    max-width: 650px;
     
     font-size: .75rem;
   }
@@ -354,35 +353,9 @@ sup {
 }
 
 
-  #filters {
-    position: sticky;
-    top: 0;
-    background: #fff;
-    padding: 1em;
-    width: 100%;
-  @media only screen and (max-width: 720px) {
-    padding: 1em .5em;
-    }
-
-    a {
-      font-size: 1rem;
-      opacity: 0.4;
-    }
-
-    a:hover,
-    a[active] {
-      opacity: 0.8;
-      cursor: pointer;
-    }
-
-
-    a:not(:last-of-type):after {
-      content: ","
-    }
-
-  }
 
 .filters{
+  
   a{
         opacity: 0.6;
   }
@@ -407,25 +380,29 @@ sup {
   }
   
   .library-header{
+    padding: 1em;
     width: 100%;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     
     h2{
-      width: 220px;
+      width: 140px;
       display: inline-block;
+      margin: 0;
+      padding: 0;
     }
     
     .filters{
       transform: translateY(8px);
-      width: calc(100% - 220px - 2em);
+      width: calc(100% - 140px - 1em);
     font-family: 'Editorial New';
       font-weight: 300;
       
       a{
+        padding: .1em;
         display: inline-block;
-        min-width: 150px;
+        min-width: 140px;
       }
       
       
@@ -448,6 +425,13 @@ sup {
 
 }
 
+.library-view-container .book[filter="hide"]{
+  opacity: 0.2;
+}
+
+.library-view-container .book[filter="show"]{
+opacity: 1;
+}
 
 #library .library-view{
   
@@ -528,7 +512,7 @@ sup {
     }
     
     p{
-      font-size: .6rem;
+      font-size: .75rem;
     }
     
     h1[name='title']{
@@ -634,7 +618,6 @@ sup {
 .library-view-list .book {
   position: relative;
   display: inline-block;
-//  background: red;
   margin: 0;
   padding: .5em;
   vertical-align: center;
@@ -669,9 +652,10 @@ sup {
   span[name='author'] {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
-    font-size: .5em;
+    font-size: .75em;
     text-align: right;
-    letter-spacing: -.25px;
+      font-family: $serif;
+      letter-spacing: -.25px;
   }
   
   @media only screen and (max-width: 720px) {
@@ -715,7 +699,12 @@ sup {
 .book[type='acquired'] {}
 
 .book[type='wishlist'] {
-  opacity: 0.4;
+  opacity: 0.5;
+  
+  span{
+  opacity: 0.6;
+  }
+  
 }
 
 @media only screen and (max-width: 720px) {

@@ -259,17 +259,21 @@ $(document).ready(function () {
   $(".filters").on("click", "a", function () {
     
     
-    $(".library-view-container .book").hide();
+    $(".library-view-container .book").attr("filter", "hide");
 
     let f = $(this).attr("name");
     
+    $(".filters a").removeAttr("active");
+    $(this).attr("active", "");
+    
     if(f == "all"){
-      $(".library-view-container .book").show();
+      $(".library-view-container .book").attr("filter", "show");
+      
+      $(".book[type='wishlist']").css("opacity", 0.5)
+      
       return;
     }
     
-    $(".filters a").removeAttr("active");
-    $(this).attr("active", "");
 
     console.log(f);
 
@@ -277,7 +281,7 @@ $(document).ready(function () {
 
       if (book.Tags && book.Tags.indexOf(f) !== -1) {
         
-        $(".library-view-container .book[i='" + book.i  +"']").show();
+        $(".library-view-container .book[i='" + book.i  +"']").attr("filter", "show");
         
       }
 

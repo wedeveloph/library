@@ -3,13 +3,6 @@
 }
 
 @font-face {
-  font-family: "Favorit Mono";
-  src: url("FavoritMono-Regular.woff2") format("woff2"), url("FavoritMono-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "Editorial New";
   src: url("EditorialNew-Regular.woff2") format("woff2"), url("EditorialNew-Regular.woff") format("woff");
   font-weight: normal;
@@ -42,10 +35,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #272727;
-  font-family: "Favorit Mono";
+  font-family: "Times New Roman";
   margin: 0;
   padding: 0;
   scroll-margin-top: 20vh;
+}
+
+footer {
+  min-height: 5vh;
 }
 
 p {
@@ -71,6 +68,8 @@ p {
   justify-content: space-between;
   width: 100%;
   padding: 2em;
+  font-family: "Editorial New";
+  font-weight: 300;
 }
 #intro .intro-nav span.descriptor {
   position: absolute;
@@ -80,13 +79,13 @@ p {
   padding: 2em;
   width: 100%;
   left: 0;
-  text-transform: uppercase;
   text-align: center;
 }
 #intro .intro-nav a {
   cursor: pointer;
   z-index: 9;
-  opacity: 0.75;
+  opacity: 0.8;
+  letter-spacing: -0.25px;
 }
 #intro .intro-nav a:hover {
   opacity: 1;
@@ -115,6 +114,9 @@ p {
   letter-spacing: -0.25px;
   font-size: 0.8rem;
   text-align: center;
+  max-width: 270px;
+  line-height: 90%;
+  margin: 0 auto;
 }
 #intro #intro-main .intro-books {
   display: flex;
@@ -127,24 +129,20 @@ p {
   margin: 0.2em;
 }
 
-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
-  padding-bottom: 40px;
-  font-size: 0.8rem;
+#intro .decor {
+  position: absolute;
+  mix-blend-mode: darken;
 }
-footer a {
-  color: #000;
-  text-decoration: none;
-  opacity: 0.8;
+#intro .decor-book {
+  bottom: 0;
+  opacity: 0.4;
 }
 
 #top {
   display: flex;
-  justify-content: flex-start;
-  height: 130px;
+  justify-content: space-between;
+  min-height: 260px;
+  padding: 2em;
 }
 #top h1, #top h2 {
   font-weight: normal;
@@ -155,15 +153,18 @@ footer a {
   cursor: pointer;
 }
 #top .subnav h2 {
-  font-size: 1rem;
+  font-size: 1.25rem;
+  font-family: "Editorial New";
+  font-weight: 300;
+  letter-spacing: -0.25px;
+  margin: 0;
+  padding: 0;
 }
 #top .subnav:hover > h2:not(:hover) {
   opacity: 0.5;
 }
 #top .t {
-  margin-right: 0.5em;
   border-radius: 1px solid #000;
-  padding: 0.5em;
 }
 #top .t.title {
   width: 250px;
@@ -176,7 +177,7 @@ footer a {
   overflow-y: scroll;
   flex-grow: 1;
   width: 70vw;
-  max-width: 500px;
+  max-width: 650px;
   font-size: 0.75rem;
 }
 #top .info-wrapper[content] {
@@ -256,31 +257,6 @@ sup {
   font-size: 0.4rem;
 }
 
-#filters {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  padding: 1em;
-  width: 100%;
-}
-@media only screen and (max-width: 720px) {
-  #filters {
-    padding: 1em 0.5em;
-  }
-}
-#filters a {
-  font-size: 1rem;
-  opacity: 0.4;
-}
-#filters a:hover,
-#filters a[active] {
-  opacity: 0.8;
-  cursor: pointer;
-}
-#filters a:not(:last-of-type):after {
-  content: ",";
-}
-
 .filters a {
   opacity: 0.6;
 }
@@ -302,24 +278,28 @@ sup {
   letter-spacing: -1px;
 }
 #library .library-header {
+  padding: 1em;
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 }
 #library .library-header h2 {
-  width: 220px;
+  width: 140px;
   display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 #library .library-header .filters {
   transform: translateY(8px);
-  width: calc(100% - 220px - 2em);
+  width: calc(100% - 140px - 1em);
   font-family: "Editorial New";
   font-weight: 300;
 }
 #library .library-header .filters a {
+  padding: 0.1em;
   display: inline-block;
-  min-width: 150px;
+  min-width: 140px;
 }
 #library .library-wrapper {
   height: auto;
@@ -327,6 +307,14 @@ sup {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.library-view-container .book[filter=hide] {
+  opacity: 0.2;
+}
+
+.library-view-container .book[filter=show] {
+  opacity: 1;
 }
 
 #library .library-view {
@@ -396,7 +384,7 @@ sup {
   }
 }
 #library .library-view .library-view-details p {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
 }
 #library .library-view .library-view-details h1[name=title] {
   font-family: "Editorial New";
@@ -510,8 +498,9 @@ sup {
 .library-view-list .book span[name=author] {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.5em;
+  font-size: 0.75em;
   text-align: right;
+  font-family: "Times New Roman";
   letter-spacing: -0.25px;
 }
 @media only screen and (max-width: 720px) {
@@ -554,7 +543,10 @@ sup {
 }
 
 .book[type=wishlist] {
-  opacity: 0.4;
+  opacity: 0.5;
+}
+.book[type=wishlist] span {
+  opacity: 0.6;
 }
 
 @media only screen and (max-width: 720px) {
