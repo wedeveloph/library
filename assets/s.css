@@ -1,8 +1,28 @@
-@import url("https://use.typekit.net/mak3bry.css");
 * {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Favorit Mono";
+  src: url("FavoritMono-Regular.woff2") format("woff2"), url("FavoritMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Editorial New";
+  src: url("EditorialNew-Regular.woff2") format("woff2"), url("EditorialNew-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Editorial New";
+  src: url("EditorialNew-Light.woff2") format("woff2"), url("EditorialNew-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Standard";
   src: url("Standard-Book.woff2") format("woff2"), url("Standard-Book.woff") format("woff");
@@ -22,7 +42,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #272727;
-  font-family: "Standard";
+  font-family: "Favorit Mono";
   margin: 0;
   padding: 0;
   scroll-margin-top: 20vh;
@@ -51,7 +71,6 @@ p {
   justify-content: space-between;
   width: 100%;
   padding: 2em;
-  font-family: "letter-gothic-std", monospace;
 }
 #intro .intro-nav span.descriptor {
   position: absolute;
@@ -68,7 +87,6 @@ p {
   cursor: pointer;
   z-index: 9;
   opacity: 0.75;
-  text-transform: uppercase;
 }
 #intro .intro-nav a:hover {
   opacity: 1;
@@ -84,15 +102,17 @@ p {
 }
 #intro #intro-main h1 {
   font-size: 5.2em;
-  font-weight: normal;
   text-align: center;
   margin: 0 auto;
-  font-family: "minion-pro-condensed", serif;
-  letter-spacing: -2.5px;
+  font-family: "Editorial New";
+  font-weight: 300;
+  letter-spacing: -2px;
   line-height: 90%;
   padding: 1rem;
 }
 #intro #intro-main p {
+  font-family: "Times New Roman";
+  letter-spacing: -0.25px;
   font-size: 0.8rem;
   text-align: center;
 }
@@ -175,29 +195,6 @@ footer a {
     overflow-y: scroll;
     width: 100vw;
   }
-}
-
-#nav {
-  z-index: 9;
-  position: fixed;
-  background: #fff;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  padding: 1em;
-}
-#nav .type {
-  display: flex;
-  justify-content: space-around;
-}
-#nav a {
-  padding: 0 0.5em;
-  cursor: pointer;
-  opacity: 0.2;
-  font-size: 0.8rem;
-}
-#nav a[active] {
-  opacity: 0.8;
 }
 
 #info {
@@ -284,15 +281,49 @@ sup {
   content: ",";
 }
 
+.filters a {
+  opacity: 0.6;
+}
+.filters a:hover,
+.filters a[active] {
+  opacity: 1;
+  cursor: pointer;
+}
+
 #library {
   width: 100%;
   padding: 0 1em;
 }
-#library .library-view {
-  min-height: 400px;
+#library h2 {
+  font-weight: normal;
+  font-family: "Editorial New";
+  font-weight: 300;
+  font-size: 1.75rem;
+  letter-spacing: -1px;
+}
+#library .library-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+#library .library-header h2 {
+  width: 220px;
+  display: inline-block;
+}
+#library .library-header .filters {
+  transform: translateY(8px);
+  width: calc(100% - 220px - 2em);
+  font-family: "Editorial New";
+  font-weight: 300;
+}
+#library .library-header .filters a {
+  display: inline-block;
+  min-width: 150px;
 }
 #library .library-wrapper {
   height: auto;
+  min-height: 600px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -302,9 +333,36 @@ sup {
   height: auto;
 }
 #library .library-view .library-view-wrapper {
-  padding: 1em 0;
+  padding: 2em 0;
+  padding-top: 5em;
   text-align: center;
   width: 100%;
+}
+#library .library-view .library-view-wrapper p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: "Times New Roman";
+  letter-spacing: -0.25px;
+}
+#library .library-view .library-view-wrapper .library-view-details-titleauthor {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  transform: translateY(-160px);
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (max-width: 720px) {
+  #library .library-view .library-view-wrapper .library-view-details-titleauthor {
+    transform: translateY(-120px);
+  }
+}
+#library .library-view .library-view-wrapper *._acquired {
+  display: block;
+}
+#library .library-view .library-view-wrapper *._unacquired {
+  display: none;
 }
 #library .library-view .library-view-book {
   display: inline-block;
@@ -314,31 +372,56 @@ sup {
   background: #000;
   margin: 0 auto;
 }
-#library .library-view .library-view-wrapper.wishlist {
+@media only screen and (max-width: 720px) {
+  #library .library-view .library-view-book {
+    width: 120px;
+    height: 180px;
+  }
+}
+#library .library-view .library-view-wrapper.wishlist .library-view-book {
   opacity: 0.4;
 }
+#library .library-view .library-view-wrapper.wishlist *._acquired {
+  display: none;
+}
+#library .library-view .library-view-wrapper.wishlist *._unacquired {
+  display: block;
+}
 #library .library-view .library-view-details {
-  padding: 1em;
-  min-height: 80px;
+  padding: 0.5em;
+}
+@media only screen and (max-width: 720px) {
+  #library .library-view .library-view-details {
+    min-height: 70px;
+  }
 }
 #library .library-view .library-view-details p {
   font-size: 0.6rem;
 }
 #library .library-view .library-view-details h1[name=title] {
-  font-family: "minion-pro-condensed", serif;
-  font-size: 1.5rem;
+  font-family: "Editorial New";
+  text-align: center;
+  width: 80vw;
+  font-weight: 300;
+  font-size: 2rem;
   letter-spacing: -1px;
   line-height: 90%;
-  margin: 0;
-  font-weight: normal;
+  margin: 0 auto;
 }
 #library .library-view .library-view-details span[name=author] {
-  font-family: "minion-pro-condensed", serif;
+  font-family: "Times New Roman";
+  letter-spacing: -0.25px;
   font-size: 0.75rem;
   opacity: 0.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (max-width: 720px) {
+  #library .library-view .library-view-horizontal-wrapper, #library .library-view .library-view-horizontal {
+    max-height: 100px;
+    height: 100px;
+  }
 }
 #library .library-view .library-view-horizontal-wrapper {
   width: 100%;
@@ -358,10 +441,10 @@ sup {
 #library .library-view .library-view-horizontal .book {
   position: relative;
   display: inline-block;
-  width: 30px;
+  width: 20px;
   height: 180px;
   background: #000;
-  margin: 0.25em;
+  margin: 0.1em;
   margin-top: auto;
   margin-bottom: 0;
   transition: all 0.4s linear;
@@ -386,9 +469,16 @@ sup {
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  counter-reset: book-count;
+}
+@media only screen and (max-width: 720px) {
+  .library-view-list {
+    padding: 0.75em;
+  }
 }
 
 .library-view-list .book {
+  position: relative;
   display: inline-block;
   margin: 0;
   padding: 0.5em;
@@ -397,34 +487,32 @@ sup {
   cursor: pointer;
   transition: all 0.2s linear;
   transition-delay: 0.1s;
-  width: 50%;
-  max-width: 450px;
+  width: calc(50% - 12px);
+  counter-increment: book-count;
   display: flex;
   justify-content: space-between;
 }
 .library-view-list .book span {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 .library-view-list .book span[name=title] {
   display: inline-block;
-  max-width: 60vw;
+  padding-left: 0.25em;
+  padding-right: 1em;
+  max-width: 70%;
   width: 400px;
-  font-weight: normal;
   text-align: justify;
-  line-height: 100%;
-  font-family: "minion-pro-condensed", serif;
+  line-height: 110%;
+  font-family: "Editorial New";
+  font-weight: 300;
+  letter-spacing: -0.25px;
 }
 .library-view-list .book span[name=author] {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 0.6em;
+  font-size: 0.5em;
   text-align: right;
-}
-.library-view-list .book span.donor {
-  font-size: 0.75em;
-  padding: 0.5em 0;
-  color: rgba(0, 0, 0, 0.6);
-  display: none;
+  letter-spacing: -0.25px;
 }
 @media only screen and (max-width: 720px) {
   .library-view-list .book {
@@ -434,6 +522,31 @@ sup {
     margin: 0.15em 0;
     padding: 0.25em 0;
   }
+  .library-view-list .book span[name=title] {
+    padding-left: 0.75rem;
+  }
+  .library-view-list .book span[name=author] {
+    display: none;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .library-view-list .book {
+    width: calc(33% - 12px);
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .library-view-list .book {
+    width: calc(25% - 12px);
+  }
+}
+
+.library-view-list .book::before {
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  content: counter(book-count);
+  font-size: 0.4rem;
+  opacity: 0.6;
 }
 
 .book:hover {

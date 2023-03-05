@@ -2,9 +2,38 @@
   box-sizing: border-box;
 }
 
+$serif: "Times New Roman";
 
-  
-  @import url("https://use.typekit.net/mak3bry.css");
+@font-face {
+    font-family: 'Favorit Mono';
+    src: url('FavoritMono-Regular.woff2') format('woff2'),
+        url('FavoritMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Editorial New';
+    src: url('EditorialNew-Regular.woff2') format('woff2'),
+        url('EditorialNew-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Editorial New';
+    src: url('EditorialNew-Light.woff2') format('woff2'),
+        url('EditorialNew-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 
 @font-face {
   font-family: 'Standard';
@@ -32,7 +61,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #272727;
-  font-family: 'Standard';
+        font-family: 'Favorit Mono';
+
+
   margin: 0;
   padding: 0;
   
@@ -73,7 +104,7 @@ p {
     justify-content: space-between;
     width: 100%;
     padding: 2em;
-    font-family: "letter-gothic-std", monospace;
+
     
     span.descriptor{
       position: absolute;
@@ -91,7 +122,6 @@ p {
       cursor: pointer;
       z-index: 9;
       opacity: 0.75;
-      text-transform: uppercase;
     }
     
     a:hover{
@@ -115,16 +145,18 @@ p {
     
     h1{
       font-size:5.2em;
-      font-weight: normal;
       text-align: center;
       margin: 0 auto;
-      font-family: "minion-pro-condensed", serif;
-      letter-spacing: -2.5px;
+          font-family: 'Editorial New';
+      font-weight: 300;
+      letter-spacing: -2px;
       line-height: 90%;
       padding: 1rem;
     }
     
     p{
+      font-family: $serif;
+      letter-spacing: -.25px;
       font-size: .8rem;
       text-align: center;
     }
@@ -244,32 +276,6 @@ footer {
 }
 
 
-#nav {
-  z-index: 9;
-  position: fixed;
-  background: #fff;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  padding: 1em;
-
-  .type {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  a {
-    padding: 0 .5em;
-    cursor: pointer;
-    opacity: 0.2;
-    font-size: .8rem;
-  }
-
-  a[active] {
-    opacity: 0.8;
-  }
-
-}
 
 #info {
   padding: 1em .5em;
@@ -376,17 +382,65 @@ sup {
 
   }
 
+.filters{
+  a{
+        opacity: 0.6;
+  }
+  
+    a:hover,
+    a[active] {
+      opacity: 1;
+      cursor: pointer;
+    }
+}
+
 #library {
   width: 100%;
   padding: 0 1em;
   
+  h2{
+    font-weight: normal;
+    font-family: 'Editorial New';
+    font-weight: 300;
+    font-size: 1.75rem;
+    letter-spacing: -1px;
+  }
+  
+  .library-header{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    
+    h2{
+      width: 220px;
+      display: inline-block;
+    }
+    
+    .filters{
+      transform: translateY(8px);
+      width: calc(100% - 220px - 2em);
+    font-family: 'Editorial New';
+      font-weight: 300;
+      
+      a{
+        display: inline-block;
+        min-width: 150px;
+      }
+      
+      
+    }
+    
+  }
+  
   .library-view{
-    min-height: 400px;
+
   }
 
 
   .library-wrapper {
     height: auto;
+    min-height: 600px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -400,10 +454,39 @@ sup {
   height: auto;
   
   .library-view-wrapper{
-    padding: 1em 0;
+    padding: 2em 0;
+    padding-top: 5em;
     
     text-align: center;
     width: 100%;
+    
+    p{
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: $serif;
+      letter-spacing: -.25px;
+    }
+    
+    .library-view-details-titleauthor{
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      left: 0;
+      transform: translateY(-160px);
+      margin: 0;
+      padding: 0;
+  @media only screen and (max-width: 720px) {
+      transform: translateY(-120px);
+      }
+    }
+    
+    *._acquired{
+      display: block;
+    }
+    
+    *._unacquired{
+      display:none;
+    }
   }
   
   .library-view-book{
@@ -413,30 +496,55 @@ sup {
     padding: .5em;
     background:#000;
     margin: 0 auto;
+    
+  @media only screen and (max-width: 720px) {
+    width: 120px;
+    height: 180px;
+    }
   }
   .library-view-wrapper.wishlist{
-    opacity: 0.4;  
+//    opacity: 0.7;  
+    
+    .library-view-book{
+      opacity: 0.4;
+    }
+    
+    *._acquired{
+      display: none;
+    }
+    
+    *._unacquired{
+      display:block;
+    }
+    
   }
   
   .library-view-details{
-    padding: 1em;
-    min-height: 80px;
+    padding: .5em;
+//    min-height: 80px;
+    
+  @media only screen and (max-width: 720px) {
+    min-height: 70px;
+    }
     
     p{
       font-size: .6rem;
     }
     
     h1[name='title']{
-      font-family: "minion-pro-condensed", serif;
-      font-size: 1.5rem;
+    font-family: 'Editorial New';
+      text-align: center;
+      width: 80vw;
+      font-weight: 300;
+      font-size: 2rem;
       letter-spacing: -1px;
       line-height: 90%;
-      margin: 0;
-      font-weight: normal;
+      margin: 0 auto;
     }
     
     span[name='author']{
-      font-family: "minion-pro-condensed", serif;
+      font-family: $serif;
+      letter-spacing: -.25px;
       font-size: .75rem;
       opacity: 0.6;
     text-rendering: optimizeLegibility;
@@ -445,6 +553,17 @@ sup {
     }
     
   }
+  
+      
+  @media only screen and (max-width: 720px) {
+    
+    .library-view-horizontal-wrapper, .library-view-horizontal{
+      max-height: 100px;      
+      height: 100px;
+    }  
+    
+    }
+  
   
   .library-view-horizontal-wrapper{
     width: 100%;
@@ -465,15 +584,15 @@ sup {
     .book{
       position: relative;
       display: inline-block;
-      width: 30px;
+      width: 20px;
       height: 180px;
       background: #000;
-      margin: .25em;
+      margin: .1em;
       margin-top: auto;
       margin-bottom: 0;
       
-  transition: all .4s linear;
-  transition-delay: .1s;
+    transition: all .4s linear;
+    transition-delay: .1s;
 
       
       .book-content{
@@ -503,9 +622,17 @@ sup {
   display: flex;
   justify-content: space-between;
   padding: 1em;
+  
+  counter-reset: book-count;
+  
+  @media only screen and (max-width: 720px) {
+  padding: .75em;
+  }
+  
 }
 
 .library-view-list .book {
+  position: relative;
   display: inline-block;
 //  background: red;
   margin: 0;
@@ -515,53 +642,70 @@ sup {
   cursor: pointer;
   transition: all .2s linear;
   transition-delay: .1s;
-  width: 50%;
-  max-width: 450px;
+  width: calc(50% - 12px);
+  
+  counter-increment: book-count;
   
   display: flex;
   justify-content: space-between;
   
   span{
-    font-size: .7rem;
+    font-size: .8rem;
   }
 
     span[name='title'] {
     display: inline-block;
-      max-width: 60vw;
-      width: 400px;
-    font-weight: normal;
+    padding-left: .25em;
+    padding-right: 1em;
+    max-width: 70%;
+    width: 400px;
     text-align: justify;
-    line-height: 100%;
-      font-family: "minion-pro-condensed", serif;
-      
+    line-height: 110%;
+    font-family: 'Editorial New';
+      font-weight: 300;
+      letter-spacing: -.25px;
   }
 
   span[name='author'] {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
-    font-size: .6em;
+    font-size: .5em;
     text-align: right;
+    letter-spacing: -.25px;
   }
-  
-  span.donor{
-    font-size: .75em;
-    padding: .5em 0;
-    color: rgba(0, 0, 0, 0.6);
-    display: none;
-  }
-  
   
   @media only screen and (max-width: 720px) {
     width: 100%;
     max-width: none;
-  font-size: .8rem;
+    font-size: .8rem;
     margin: .15em 0;
     padding: .25em 0;
     
+    span[name='title'] {
+    padding-left: .75rem;
+    }
+    
+  span[name='author'] { display: none; }
+    
   }
   
+  @media only screen and (min-width: 900px) {
+    width: calc(33% - 12px);
+  }
   
+  @media only screen and (min-width: 1800px) {
+    width: calc(25% - 12px);
+  }
 
+}
+
+.library-view-list .book::before{
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  content: counter(book-count);
+  font-size: .4rem;
+  opacity: 0.6;
 }
 
 .book:hover {

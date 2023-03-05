@@ -10,27 +10,33 @@ function pick(arr) {
 
 let library = "https://opensheet.elk.sh/1OV6LuUUmJuGLLDSNERuG83fAMfBZUanwNbQBcU8wedY/Inventory";
 
-const libraries = {
-
-}
+var books = [];
 
 
-function viewBook(_title, _author, _color, _acquisition) {
+function viewBook(id, _title, _author, _color, _acquisition) {
 
 
   $(".library-view-wrapper").removeClass("wishlist");
   $(".library-view-list .book").removeClass("active");
 
 
-  // scroll
-  $('html, body').animate({
-    scrollTop: $("#library").offset().top
-  }, 500);
-
 
   $(".library-view-details *[name='title']").html(_title);
   $(".library-view-details span[name='author']").html(_author);
 
+  // unacquired
+  if (books[id].STATUS == "WISHLIST") {
+    $(".library-view-wrapper").addClass("wishlist");
+  }
+
+  if (books[id].STATUS == "ACQUIRED") {
+
+    if (books[id].Donor && books[id].Donor.length !== 0) {
+      $(".library-view-details *[name='donor']").html(books[id].Donor);
+    } else {
+
+    }
+  }
 
 
   // handle colors
@@ -84,6 +90,8 @@ $(document).ready(function () {
 
       if (!book.hasOwnProperty('Book')) return;
 
+      let _len = books.push(book);
+
       //      console.log(book, i);
 
       let _acquisition;
@@ -93,43 +101,48 @@ $(document).ready(function () {
       if (book.STATUS == "WISHLIST") _acquisition = "wishlist";
       if (book.STATUS == "ACQUIRED") _acquisition = "have";
 
-      let bookHorizontalDiv = $(`<div class='book' type='` + _acquisition + `' title='` + book.Book +`'>
+      let bookHorizontalDiv = $(`<div class='book' i="` + i + `" type='` + _acquisition + `' title='` + book.Book + `'>
           <div class="book-content">
           <span name='title'>` + book.Book + `</span><br>
           <span name='author'>` + book.Author + `</span>
           </div>
           </div>`).appendTo(".library-view-horizontal")
-        //          .css("width", randInt(25,40) + "px")
-        .css("height", randInt(100, 180) + "px");
+        .css("height", randInt(70, 120) + "px");
 
-      let bookDiv = $(`<div class='book' type='` + _acquisition + `'>
+      let bookDiv = $(`<div class='book' i="` + i + `" type='` + _acquisition + `'>
           <span name='title'>` + book.Book + `</span>
           <span name='author'>` + book.Author + `</span>
           </div>`).appendTo(".library-view-list");
 
-      if (_acquisition == "wishlist") {
-        bookDiv.find("strong").append("<sup>WISHLIST</sup>")
-      }
-
       if (book.Tags && book.Tags.length !== 0) {
+
+        // fix tags
+
         let tags = book.Tags.split(",");
         let finalTags = "";
+        let arrayTags = [];
 
         $.each(tags, function (i, tag) {
           finalTags += tag.trim().toLowerCase();
           finalTags += " ";
+          arrayTags.push(tag.trim().toLowerCase());
         });
+
+        books[_len - 1].Tags = arrayTags;
 
         $(bookDiv).attr("tags", finalTags);
       }
+      
+      books[_len - 1].i = i;
 
       if (book.Donor && book.Donor.length !== 0) {
-        bookDiv.append("<span class='donor'>(Donated by " + book.Donor + ")</span>");
+        bookDiv.attr("donor", book.Donor);
       }
 
 
     });
 
+    console.log(books);
 
   });
 
@@ -141,14 +154,16 @@ $(document).ready(function () {
   //  
 
   $(".library-view-horizontal").on("mouseover", ".book", function () {
+    $(".library-view-wrapper").removeClass("wishlist");
 
+    let _id = $(this).attr("i");
     let _title = $(this).find("[name='title']").html();
     let _author = $(this).find("[name='author']").html();
     var n = iJ();
 
     console.log("!", _title, _author);
 
-    viewBook(_title, _author, n, $(this).attr("type"));
+    viewBook(_id, _title, _author, n, $(this).attr("type"));
 
     // if unacquired
     if ($(this).attr("type") == "wishlist") {
@@ -156,12 +171,6 @@ $(document).ready(function () {
     }
 
   });
-
-
-  $(".library-view-horizontal").on("mouseleave", ".book", function () {
-    $(".library-view-wrapper").removeClass("wishlist");
-  });
-
 
   $(".library-view-horizontal-wrapper").mousewheel(function (event, delta) {
     this.scrollLeft -= (delta * 1.2);
@@ -171,6 +180,7 @@ $(document).ready(function () {
 
   $(".library-view-list").on("click", ".book",
     function () {
+
 
       $(".library-view-wrapper").removeClass("wishlist");
       $(".library-view-list .book").removeClass("active");
@@ -186,12 +196,23 @@ $(document).ready(function () {
         $(".library-view-wrapper").addClass("wishlist");
       }
 
-
+      let _id = $(this).attr("i");
       let _title = $(this).find("[name='title']").html();
       let _author = $(this).find("[name='author']").html();
 
 
-      viewBook(_title, _author, n, $(this).attr("type"));
+
+      // scroll only on click
+      $('html, body').animate({
+        scrollTop: $("#library").offset().top
+      }, 500);
+
+
+      $('.library-view-horizontal-wrapper').animate({
+        scrollLeft: $(".library-view-horizontal .book[title='" + _title + "']").position().left - 50
+      }, 500);
+
+      viewBook(_id, _title, _author, n, $(this).attr("type"));
 
 
     });
@@ -234,5 +255,35 @@ $(document).ready(function () {
     }
   );
 
+
+  $(".filters").on("click", "a", function () {
+    
+    
+    $(".library-view-container .book").hide();
+
+    let f = $(this).attr("name");
+    
+    if(f == "all"){
+      $(".library-view-container .book").show();
+      return;
+    }
+    
+    $(".filters a").removeAttr("active");
+    $(this).attr("active", "");
+
+    console.log(f);
+
+    for (book of books) {
+
+      if (book.Tags && book.Tags.indexOf(f) !== -1) {
+        
+        $(".library-view-container .book[i='" + book.i  +"']").show();
+        
+      }
+
+    }
+
+
+  });
 
 });
