@@ -1,3 +1,4 @@
+@import url("https://use.typekit.net/mak3bry.css");
 * {
   box-sizing: border-box;
 }
@@ -22,12 +23,88 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #272727;
   font-family: "Standard";
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 20vh;
 }
 
 p {
   margin: 0;
   margin-bottom: 0.5em;
   line-height: 130%;
+}
+
+#intro {
+  background: #fff;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#intro .intro-nav {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2em;
+  font-family: "letter-gothic-std", monospace;
+}
+#intro .intro-nav span.descriptor {
+  position: absolute;
+  opacity: 0.4;
+  text-align: center;
+  display: inline-block;
+  padding: 2em;
+  width: 100%;
+  left: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+#intro .intro-nav a {
+  cursor: pointer;
+  z-index: 9;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+#intro .intro-nav a:hover {
+  opacity: 1;
+}
+#intro .intro-nav.intro-top {
+  top: 0;
+}
+#intro .intro-nav.intro-bottom {
+  bottom: 0;
+}
+#intro .intro-nav.intro-bottom span {
+  bottom: 0;
+}
+#intro #intro-main h1 {
+  font-size: 5.2em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 auto;
+  font-family: "minion-pro-condensed", serif;
+  letter-spacing: -2.5px;
+  line-height: 90%;
+  padding: 1rem;
+}
+#intro #intro-main p {
+  font-size: 0.8rem;
+  text-align: center;
+}
+#intro #intro-main .intro-books {
+  display: flex;
+}
+#intro #intro-main .intro-books .b {
+  display: inline-block;
+  width: 40px;
+  height: 150px;
+  background: #000;
+  margin: 0.2em;
 }
 
 footer {
@@ -189,6 +266,11 @@ sup {
   padding: 1em;
   width: 100%;
 }
+@media only screen and (max-width: 720px) {
+  #filters {
+    padding: 1em 0.5em;
+  }
+}
 #filters a {
   font-size: 1rem;
   opacity: 0.4;
@@ -206,35 +288,152 @@ sup {
   width: 100%;
   padding: 0 1em;
 }
+#library .library-view {
+  min-height: 400px;
+}
 #library .library-wrapper {
+  height: auto;
   width: 100%;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.book {
+#library .library-view {
+  height: auto;
+}
+#library .library-view .library-view-wrapper {
+  padding: 1em 0;
+  text-align: center;
+  width: 100%;
+}
+#library .library-view .library-view-book {
   display: inline-block;
-  margin: 0.15em 0;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 0.5em 0.75em;
+  width: 180px;
+  height: 260px;
+  padding: 0.5em;
+  background: #000;
+  margin: 0 auto;
+}
+#library .library-view .library-view-wrapper.wishlist {
+  opacity: 0.4;
+}
+#library .library-view .library-view-details {
+  padding: 1em;
+  min-height: 80px;
+}
+#library .library-view .library-view-details p {
+  font-size: 0.6rem;
+}
+#library .library-view .library-view-details h1[name=title] {
+  font-family: "minion-pro-condensed", serif;
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+  line-height: 90%;
+  margin: 0;
+  font-weight: normal;
+}
+#library .library-view .library-view-details span[name=author] {
+  font-family: "minion-pro-condensed", serif;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#library .library-view .library-view-horizontal-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+  height: 150px;
+  padding: 0.5em;
+}
+#library .library-view .library-view-horizontal {
+  width: fit-content;
+  height: 150px;
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+}
+#library .library-view .library-view-horizontal .book {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 180px;
+  background: #000;
+  margin: 0.25em;
+  margin-top: auto;
+  margin-bottom: 0;
+  transition: all 0.4s linear;
+  transition-delay: 0.1s;
+}
+#library .library-view .library-view-horizontal .book .book-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#library .library-view .library-view-horizontal .book span[name=title], #library .library-view .library-view-horizontal .book span[name=author] {
+  display: none;
+}
+#library .library-view .library-view-horizontal .book:hover {
+  cursor: pointer;
+  transform: rotate(3deg);
+  transition: background 0s linear;
+}
+
+.library-view-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.library-view-list .book {
+  display: inline-block;
+  margin: 0;
+  padding: 0.5em;
   vertical-align: center;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s linear;
   transition-delay: 0.1s;
+  width: 50%;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-between;
 }
-.book strong {
+.library-view-list .book span {
+  font-size: 0.7rem;
+}
+.library-view-list .book span[name=title] {
   display: inline-block;
+  max-width: 60vw;
+  width: 400px;
   font-weight: normal;
   text-align: justify;
   line-height: 100%;
-  font-size: 1rem;
+  font-family: "minion-pro-condensed", serif;
 }
-.book u {
-  font-size: 0.9em;
+.library-view-list .book span[name=author] {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.6);
+  font-size: 0.6em;
+  text-align: right;
+}
+.library-view-list .book span.donor {
+  font-size: 0.75em;
+  padding: 0.5em 0;
+  color: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+@media only screen and (max-width: 720px) {
+  .library-view-list .book {
+    width: 100%;
+    max-width: none;
+    font-size: 0.8rem;
+    margin: 0.15em 0;
+    padding: 0.25em 0;
+  }
 }
 
 .book:hover {
@@ -263,7 +462,7 @@ footer {
   }
   #library .book {
     margin: 0.15em 0;
-    width: 100% !important;
+    width: 100%;
   }
 }
 
