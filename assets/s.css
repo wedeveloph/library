@@ -93,6 +93,9 @@ p {
 #intro .intro-nav.intro-top {
   top: 0;
 }
+#intro .intro-nav.intro-top span {
+  top: 0;
+}
 #intro .intro-nav.intro-bottom {
   bottom: 0;
 }
